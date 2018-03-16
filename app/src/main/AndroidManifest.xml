@@ -18,6 +18,8 @@
         </activity>
         <activity android:name=".Teste" />
         <activity android:name=".Cadastro" />
+        <activity android:name=".MainComprador" />
+        <activity android:name=".MainVendedor"></activity>
     </application>
 
 </manifest>
