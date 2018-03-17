@@ -42,6 +42,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        Button botaoCadastrar = (Button) findViewById(R.id.botao_cadastrar);
+        botaoCadastrar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent cadastrar = new Intent(MainActivity.this, Cadastro.class);
+                startActivity(cadastrar);
+            }
+        });
     }
 
     @Override
