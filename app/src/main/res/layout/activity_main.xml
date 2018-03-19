@@ -21,7 +21,8 @@
         android:layout_height="wrap_content"
         android:text="Login:"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-        android:textSize="14sp" />
+        android:textColor="#7cb342"
+        android:textSize="18sp" />
 
 
     <EditText
@@ -29,6 +30,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="textEmailAddress"
+        android:hint="exemplo@email.com"
         tools:layout_editor_absoluteX="63dp"
         tools:layout_editor_absoluteY="277dp" />
 
@@ -38,40 +40,50 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Senha:"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+        android:textColor="#7cb342"
+        android:textSize="18sp" />
 
     <EditText
         android:id="@+id/senha"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="textPassword"
-        tools:layout_editor_absoluteX="63dp"
-        tools:layout_editor_absoluteY="322dp" />
-
-    <Button
-        android:id="@+id/botao_cadastrar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:backgroundTint="@android:color/background_light"
-        android:text="Cadastrar"
-        android:textColor="@android:color/holo_red_light" />
-
-    <Button
-        android:id="@+id/botao_entrar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@android:drawable/ic_notification_overlay"
-        android:text="Entrar"
-        android:textColor="@android:color/black"
-        android:layout_gravity="center_horizontal"/>
+        android:inputType="textPassword" />
 
     <LinearLayout
-        android:layout_width="373dp"
-        android:layout_height="50dp"
-        android:orientation="horizontal"
-        tools:layout_editor_absoluteX="8dp"
-        tools:layout_editor_absoluteY="479dp">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/botao_cadastrar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="5dp"
+            android:layout_weight="1"
+            android:background="@android:color/white"
+            android:text="Cadastrar"
+            android:textColor="#7cb342"
+            android:textSize="18sp" />
+
+        <Button
+            android:id="@+id/botao_entrar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_weight="1"
+            android:background="#7cb342"
+            android:text="Entrar"
+            android:textColor="@android:color/white"
+            android:textSize="18sp" />
+
+    </LinearLayout>
+
+    <!--
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
 
         <ImageView
             android:id="@+id/go1"
@@ -86,6 +98,27 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             app:srcCompat="@mipmap/facebook" />
+    </LinearLayout>
+    -->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="center"
+        android:layout_marginTop="16dp">
+
+
+        <com.facebook.login.widget.LoginButton
+            android:id="@+id/login_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <com.google.android.gms.common.SignInButton
+            android:id="@+id/sign_in_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
     </LinearLayout>
 
     <TextView
