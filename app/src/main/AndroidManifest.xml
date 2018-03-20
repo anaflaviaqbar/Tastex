@@ -9,17 +9,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".Atividades.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Teste" />
-        <activity android:name=".Cadastro" />
-        <activity android:name=".MainComprador" />
-        <activity android:name=".MainVendedor"></activity>
+        <activity android:name=".Atividades.Teste" />
+        <activity android:name=".Atividades.Cadastro" />
+        <activity android:name=".Atividades.MainComprador" />
+        <activity android:name=".Atividades.MainVendedor"></activity>
 
         <!-- Login Facebook -->
         <meta-data android:name="com.facebook.sdk.ApplicationId"
