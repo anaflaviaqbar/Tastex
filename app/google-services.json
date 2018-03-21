@@ -1,0 +1,59 @@
+{
+  "project_info": {
+    "project_number": "419668230263",
+    "firebase_url": "https://tastex-a3dac.firebaseio.com",
+    "project_id": "tastex-a3dac",
+    "storage_bucket": "tastex-a3dac.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:419668230263:android:1817a22dc8b959df",
+        "android_client_info": {
+          "package_name": "com.example.anafl.comilex"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "419668230263-rtop26nhjp9kdsna4ubq3ovccsktr3s8.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "419668230263-5kp1vhc175na0gbh13qg2vlb10ed3auh.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.anafl.comilex",
+            "certificate_hash": "7866805fe3eb70822e71d8e64d253d570fe56067"
+          }
+        },
+        {
+          "client_id": "419668230263-n0kkojbluc5cp1vu7p1rjk7vsqnktfvm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB54cOGvfflgIqQPmOGpTcDR3Ouh9BTS9k"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "419668230263-rtop26nhjp9kdsna4ubq3ovccsktr3s8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
