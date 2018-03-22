@@ -130,6 +130,9 @@ public class MainActivity extends AppCompatActivity {
                 // ...
             }
         });
+
+
+
     }
 
     @Override
@@ -202,6 +205,11 @@ public class MainActivity extends AppCompatActivity {
         if (mAuthListener != null) {
             mAuth.removeAuthStateListener(mAuthListener);
         }
+    }
+
+    public void esqueceuSenha(View view) {
+       Intent esqueceuSenhaIntent = new Intent(MainActivity.this, EsqueceuSenha.class);
+       startActivity(esqueceuSenhaIntent);
     }
 /*
     // [START auth_with_google]
