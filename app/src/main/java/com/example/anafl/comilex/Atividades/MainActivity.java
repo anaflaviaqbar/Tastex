@@ -28,6 +28,8 @@ import com.google.firebase.auth.FirebaseUser;
 
 import com.facebook.FacebookSdk;
 import com.facebook.appevents.AppEventsLogger;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 /*
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -46,6 +48,9 @@ public class MainActivity extends AppCompatActivity {
 
     private CallbackManager mCallbackManager;
 
+    private FirebaseDatabase firebaseDatabase;
+    private DatabaseReference mDatabase;
+
     //private GoogleSignInClient mGoogleSignInClient;
 
 
@@ -56,6 +61,9 @@ public class MainActivity extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
 
+        firebaseDatabase = FirebaseDatabase.getInstance();
+        mDatabase = FirebaseDatabase.getInstance().getReference();  //Realtime database reference
+
         mAuthListener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
@@ -63,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
                 if (user != null) {
                     // User is signed in
                     //Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
-                    Toast.makeText(MainActivity.this,"Login: "+ user.getUid(),Toast.LENGTH_LONG).show();
+                    //Toast.makeText(MainActivity.this,"Login: "+ user.getUid(),Toast.LENGTH_LONG).show();
                 } else {
                     // User is signed out
                     //Log.d(TAG, "onAuthStateChanged:signed_out");
@@ -161,6 +169,7 @@ public class MainActivity extends AppCompatActivity {
                            // Sign in success, update UI with the signed-in user's information
                            //Log.d(TAG, "signInWithEmail:success");
                            FirebaseUser user = mAuth.getCurrentUser();
+
                            //updateUI(user);
                            Intent acessar = new Intent(MainActivity.this , MainComprador.class);
                            startActivity(acessar);
@@ -169,7 +178,7 @@ public class MainActivity extends AppCompatActivity {
                        } else {
                            // If sign in fails, display a message to the user.
                            //Log.w(TAG, "signInWithEmail:failure", task.getException());
-                           Toast.makeText(MainActivity.this, "Authentication failed.",Toast.LENGTH_SHORT).show();
+                           Toast.makeText(MainActivity.this, "Falha na autenticação!",Toast.LENGTH_SHORT).show();
                            //updateUI(null);
 
                        }
