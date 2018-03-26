@@ -11,6 +11,7 @@ import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.example.anafl.comilex.Objetos.Comprador;
+import com.example.anafl.comilex.Objetos.Vendedor;
 import com.example.anafl.comilex.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -148,8 +149,8 @@ public class Cadastro extends AppCompatActivity {
     }
 
     private void writeNewVendedor(String compradorId, String nome, String email, String cep, String contato, String senha) {
-        Comprador comprador = new Comprador(nome,email, cep, contato, senha);
+        Vendedor vendedor = new Vendedor(nome,email, cep, contato, senha);
 
-        mDatabase.child("Vendedores").child(compradorId).setValue(comprador);
+        mDatabase.child("Vendedores").child(compradorId).setValue(vendedor);
     }
 }
