@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Atividades.Splash"
+    android:background="#E53935">
+
+    <ImageView
+        android:id="@+id/imagemlogo"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@mipmap/logo4" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:textSize="15dp"
+        android:textColor="#0e0e0e"
+        android:layout_alignParentBottom="true"
+        android:gravity="center_horizontal"
+        android:text="www.tastex.com.br" />
+
+</RelativeLayout>

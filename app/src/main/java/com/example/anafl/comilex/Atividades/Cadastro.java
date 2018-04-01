@@ -10,8 +10,7 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
-import com.example.anafl.comilex.Objetos.Comprador;
-import com.example.anafl.comilex.Objetos.Vendedor;
+import com.example.anafl.comilex.Objetos.Usuario;
 import com.example.anafl.comilex.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -24,12 +23,13 @@ import com.google.firebase.database.FirebaseDatabase;
 public class Cadastro extends AppCompatActivity {
 
 
-    private EditText nomeCad;
-    private EditText emailCad;
-    private EditText cepCad;
-    private EditText contatoCad;
-    private EditText senhaCad;
-    private EditText confSenhaCad;
+    private EditText edtCadNome;
+    private EditText edtCadEmail;
+    private EditText edtCadCep;
+    private EditText edtCadContato;
+    private EditText edtCadDataNasc;
+    private EditText edtCadSenha;
+    private EditText edtConfSenha;
     private RadioGroup radioGroupCad;
 
     private FirebaseAuth mAuth;
@@ -37,8 +37,8 @@ public class Cadastro extends AppCompatActivity {
 
     private String uid;
 
-    private boolean isComprador = false;
-    private boolean isVendedor = false;
+    private boolean isFeminino = false;
+    private boolean isMasculino = false;
 
 
 
@@ -50,22 +50,23 @@ public class Cadastro extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
-        nomeCad = (EditText) findViewById(R.id.nome);
-        emailCad = (EditText) findViewById(R.id.email);
-        cepCad = (EditText) findViewById(R.id.cep);
-        contatoCad = (EditText) findViewById(R.id.contato);
-        senhaCad = (EditText) findViewById(R.id.senha);
-        confSenhaCad = (EditText) findViewById(R.id.conf_senha);
-        radioGroupCad = (RadioGroup) findViewById(R.id.radio_grupo);
+        edtCadNome = (EditText) findViewById(R.id.edtCadNome);
+        edtCadEmail = (EditText) findViewById(R.id.edtCadEmail);
+        edtCadCep = (EditText) findViewById(R.id.edtCadCep);
+        edtCadContato = (EditText) findViewById(R.id.edtCadContato);
+        edtCadDataNasc = (EditText) findViewById(R.id.edtCadDataNasc);
+        edtCadSenha = (EditText) findViewById(R.id.edtCadSenha);
+        edtConfSenha = (EditText) findViewById(R.id.edtConfSenha);
 
 
 
-        Button botaoFinalizar = (Button) findViewById(R.id.botao_finalizar);
+
+        Button botaoFinalizar = (Button) findViewById(R.id.btnGravar);
         botaoFinalizar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(senhaCad.getText().toString().equals(confSenhaCad.getText().toString())){
-                    createAccount(emailCad.getText().toString(), senhaCad.getText().toString());
+                if(edtCadSenha.getText().toString().equals(edtConfSenha.getText().toString())){
+                    createAccount(edtCadEmail.getText().toString(), edtCadSenha.getText().toString());
                 }else{
                     Toast.makeText(Cadastro.this, "Senhas diferentes!", Toast.LENGTH_LONG).show();
                 }
@@ -77,7 +78,7 @@ public class Cadastro extends AppCompatActivity {
 
 
 
-    public void createAccount(final String email, String password){
+    public void createAccount(String email, String password){
         mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
@@ -86,27 +87,8 @@ public class Cadastro extends AppCompatActivity {
                             // Sign in success, update UI with the signed-in user's information
                             //Log.d(TAG, "createUserWithEmail:success");
                             FirebaseUser user = mAuth.getCurrentUser();
-                            if(isComprador){
-                                writeNewComprador(
-                                        user.getUid(),
-                                        nomeCad.getText().toString(),
-                                        emailCad.getText().toString(),
-                                        cepCad.getText().toString(),
-                                        contatoCad.getText().toString(),
-                                        senhaCad.getText().toString()
-                                );
-                            }else if(isVendedor){
-                                writeNewVendedor(
-                                        user.getUid(),
-                                        nomeCad.getText().toString(),
-                                        emailCad.getText().toString(),
-                                        cepCad.getText().toString(),
-                                        contatoCad.getText().toString(),
-                                        senhaCad.getText().toString()
-                                );
-                            }
-
                             //updateUI(user);
+                            writeNewUser(user.getUid());
                             Toast.makeText(Cadastro.this, "Cadastro feito sucesso!", Toast.LENGTH_LONG).show();
                             finish();
                         } else {
@@ -126,31 +108,36 @@ public class Cadastro extends AppCompatActivity {
         boolean checked = ((RadioButton) v).isChecked();
 
         switch (v.getId()){
-            case R.id.radio_botao_comp:
+            case R.id.rbFeminino:
                 if(checked){
-                    //Toast.makeText(Cadastro.this,"Comprador selecionado", Toast.LENGTH_SHORT).show();
-                    isComprador = true;
-                    isVendedor = false;
+                    isFeminino = true;
+                    isMasculino = false;
                 }
                 break;
-            case R.id.radio_botao_vend:
+            case R.id.rbMasculino:
                 if(checked){
-                    //Toast.makeText(Cadastro.this,"Vendedor selecionado", Toast.LENGTH_SHORT).show();
-                    isComprador = false;
-                    isVendedor = true;
+                    isFeminino = false;
+                    isMasculino = true;
                 }
         }
     }
 
-    private void writeNewComprador(String compradorId, String nome, String email, String cep, String contato, String senha) {
-        Comprador comprador = new Comprador(nome,email, cep, contato, senha);
+    private void writeNewUser(String userId) {
+        Usuario usuario = new Usuario();
 
-        mDatabase.child("Compradores").child(compradorId).setValue(comprador);
-    }
+        usuario.setNome(edtCadNome.getText().toString());
+        usuario.setEmail(edtCadEmail.getText().toString());
+        usuario.setCep(edtCadCep.getText().toString());
+        usuario.setContato(edtCadContato.getText().toString());
+        usuario.setDataNasc(edtCadDataNasc.getText().toString());
+        usuario.setSenha(edtCadSenha.getText().toString());
+        if(isFeminino){
+            usuario.setSexo("Feminino");
+        }else if(isMasculino){
+            usuario.setSexo("Masculino");
+        }
+        usuario.setId(userId);
 
-    private void writeNewVendedor(String compradorId, String nome, String email, String cep, String contato, String senha) {
-        Vendedor vendedor = new Vendedor(nome,email, cep, contato, senha);
-
-        mDatabase.child("Vendedores").child(compradorId).setValue(vendedor);
+        mDatabase.child("users").child(userId).setValue(usuario);
     }
 }

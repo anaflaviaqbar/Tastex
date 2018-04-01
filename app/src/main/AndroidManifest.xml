@@ -11,7 +11,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Atividades.MainActivity">
+        <activity android:name=".Atividades.Splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -22,6 +22,8 @@
         <activity android:name=".Atividades.Cadastro" />
         <activity android:name=".Atividades.MainComprador" />
         <activity android:name=".Atividades.MainVendedor" />
+        <activity android:name=".Atividades.EsqueceuSenha" />
+        <activity android:name=".Atividades.MainActivity"></activity>
 
         <!-- Login Facebook -->
         <meta-data
@@ -46,7 +48,7 @@
         </activity>
         <!-- Fim Facebook -->
 
-        <activity android:name=".Atividades.EsqueceuSenha"></activity>
+
     </application>
 
 </manifest>
