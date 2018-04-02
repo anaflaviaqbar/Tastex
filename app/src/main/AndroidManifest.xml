@@ -20,8 +20,7 @@
         </activity>
         <activity android:name=".Atividades.Teste" />
         <activity android:name=".Atividades.Cadastro" />
-        <activity android:name=".Atividades.MainComprador" />
-        <activity android:name=".Atividades.MainVendedor" />
+        <activity android:name=".Atividades.MainUsuario" />
         <activity android:name=".Atividades.EsqueceuSenha" />
         <activity android:name=".Atividades.MainActivity"></activity>
 

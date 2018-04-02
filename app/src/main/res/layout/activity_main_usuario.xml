@@ -5,13 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.example.anafl.comilex.Atividades.MainComprador">
+    tools:context="com.example.anafl.comilex.Atividades.MainUsuario">
 
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="TELA DO COMPRADOR"
+        android:text="Main do Usuario"
         android:textSize="30sp"
         android:textAlignment="center"/>
 
